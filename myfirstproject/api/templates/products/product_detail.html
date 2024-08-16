@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <p>Price: {{ product.price }}</p>
+  <p>Total Price: {{ product.price_total }}</p>
+  <p>Discount: {{ product.discount }}</p>
+  <p>Quantity: {{ product.quantity }}</p>
+  <p>Description: {{ product.description }}</p>
+  <a href="{% url 'product_edit' product.pk %}">Edit</a>
+  <form action="{% url 'product_delete' product.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+{% endblock %}
